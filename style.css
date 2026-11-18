@@ -15,7 +15,100 @@ body {
   padding: 30px 16px;
 }
 
+.floating-balls {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating-ball {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  color: rgba(34, 34, 34, 0.72);
+  font-size: 17px;
+  font-weight: 800;
+  opacity: 0.24;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.08),
+    0 8px 22px rgba(45, 55, 80, 0.08);
+  animation: drift 17s ease-in-out infinite;
+}
+
+.floating-ball:nth-child(1) {
+  top: 12%;
+  left: 11%;
+  animation-delay: -2s;
+}
+
+.floating-ball:nth-child(2) {
+  top: 26%;
+  right: 9%;
+  width: 64px;
+  height: 64px;
+  animation-delay: -8s;
+}
+
+.floating-ball:nth-child(3) {
+  top: 63%;
+  left: 7%;
+  width: 48px;
+  height: 48px;
+  animation-delay: -12s;
+}
+
+.floating-ball:nth-child(4) {
+  right: 13%;
+  bottom: 12%;
+  width: 58px;
+  height: 58px;
+  animation-delay: -5s;
+}
+
+.floating-ball:nth-child(5) {
+  top: 8%;
+  right: 29%;
+  width: 42px;
+  height: 42px;
+  font-size: 14px;
+  animation-delay: -10s;
+}
+
+.floating-ball:nth-child(6) {
+  bottom: 9%;
+  left: 30%;
+  width: 44px;
+  height: 44px;
+  font-size: 14px;
+  animation-delay: -14s;
+}
+
+.floating-ball:nth-child(7) {
+  top: 75%;
+  right: 28%;
+  width: 46px;
+  height: 46px;
+  font-size: 15px;
+  animation-delay: -7s;
+}
+
+@keyframes drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-8deg);
+  }
+  50% {
+    transform: translate3d(8px, -18px, 0) rotate(8deg);
+  }
+}
+
 .container {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 520px;
   background: #fff;
@@ -170,6 +263,23 @@ h1 {
   color: #aaa;
   margin-top: 25px;
   line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .floating-ball {
+    opacity: 0.16;
+  }
+
+  .floating-ball:nth-child(5),
+  .floating-ball:nth-child(7) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-ball {
+    animation: none;
+  }
 }
 
 @media (max-width: 420px) {
