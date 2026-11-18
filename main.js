@@ -1,3 +1,26 @@
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('lotto-theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+function applyTheme(theme) {
+  const isDark = theme === 'dark';
+  document.body.classList.toggle('dark-mode', isDark);
+  themeToggle.setAttribute('aria-pressed', String(isDark));
+  themeToggle.setAttribute(
+    'aria-label',
+    isDark ? '화이트 모드로 전환' : '다크 모드로 전환'
+  );
+  themeToggle.textContent = isDark ? '☀️ 화이트 모드' : '🌙 다크 모드';
+}
+
+applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+themeToggle.addEventListener('click', () => {
+  const nextTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+  localStorage.setItem('lotto-theme', nextTheme);
+  applyTheme(nextTheme);
+});
+
 let history = [];
 
 function getColor(num) {
