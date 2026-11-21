@@ -60,6 +60,23 @@
     </p>
 
     <p class="notice"><a href="partnership.html">제휴 문의</a></p>
+
+    <section class="comments">
+      <div id="disqus_thread"></div>
+      <script>
+        var disqus_config = function () {
+          this.page.url = window.location.origin + window.location.pathname;
+          this.page.identifier = 'lotto-main';
+        };
+        (function () {
+          var d = document, s = d.createElement('script');
+          s.src = 'https://lotto-c4x1tjnq45.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>댓글을 보려면 JavaScript를 켜 주세요. <a href="https://disqus.com/?ref_noscript">Disqus</a></noscript>
+    </section>
   </div>
 </body>
 </html>
